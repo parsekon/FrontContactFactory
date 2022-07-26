@@ -20,12 +20,14 @@ const ShowContact = () => {
     setTelegram("");
     setDiscord("");
     setDesc("");
-    setLoading(true);
+
     // проверяем, что форма не пустая иначе выводится сообщение, что необходимо ввести адрес
     if (!address) {
       setErrorMessage("Нужно ввести адрес владельца");
       return;
     }
+
+    setLoading(true);
     // обращаемся к контракту ContactFactory, получаем адрес контракта Contact по адресу владельца
     // по этому адресу обращаемся к контракту Contact
     // вызываем функции telegram, discord, desc
