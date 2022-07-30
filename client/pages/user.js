@@ -10,18 +10,19 @@ const UserPage = () => {
 
   useEffect(() => {
     setCurrentAccount(sessionStorage.getItem("currentAccount"));
-    const getInfo = async (account) => {
-      try {
-        const contact = await getContactByAddress(account);
-        setTelegram(contact.telegram);
-        setDiscord(contact.discord);
-        setDesc(contact.desc);
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-    getInfo(currentAccount);
   }, []);
+
+  const getInfo = async (account) => {
+    try {
+      const contact = await getContactByAddress(account);
+      setTelegram(contact.telegram);
+      setDiscord(contact.discord);
+      setDesc(contact.desc);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+  getInfo(currentAccount);
 
   return (
     <Layout>
