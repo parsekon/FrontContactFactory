@@ -11,6 +11,9 @@ const ShowContact = () => {
   const [errorMessage, setErrorMessage] = useState();
   const [isLoading, setLoading] = useState(false);
   const addressRef = useRef();
+  const [currentAccount, setCurrentAccount] = useState(() =>
+    localStorage.getItem("currentAccount")
+  );
 
   const handleSubmit = async (event) => {
     event.preventDefault();

@@ -1,9 +1,14 @@
 import { Button, Menu } from "semantic-ui-react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const [currentAccount, setCurrentAccount] = useState();
+
+  useEffect(() => {
+    localStorage.setItem("currentAccount", currentAccount);
+  }, [currentAccount]);
+
   const handleConnectMetamaskClick = async () => {
     const { ethereum } = window;
     if (!ethereum) {

@@ -12,11 +12,8 @@ const getContactByAddress = async (address) => {
   console.log("contactAddress:", contactAddress);
   const contact = Contact(contactAddress);
   const telegram = await contact.telegram();
-  console.log("Telegram:", telegram);
   const discord = await contact.discord();
-  console.log("Discord:", discord);
   const desc = await contact.desc();
-  console.log("Desc:", desc);
   return { telegram, discord, desc };
 };
 
