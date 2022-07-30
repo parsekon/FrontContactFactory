@@ -20,7 +20,7 @@ const Header = () => {
         method: "eth_requestAccounts",
       });
       setCurrentAccount(accounts[0]);
-      sessionStorage.setItem("currentAccount", currentAccount);
+      sessionStorage.setItem("currentAccount", accounts[0]);
     } catch (error) {
       console.error(error);
     }

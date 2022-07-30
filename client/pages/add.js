@@ -9,11 +9,6 @@ const AddContact = () => {
   const [discord, setDiscord] = useState("");
   const [errorMessage, setErrorMessage] = useState();
   const [successMessage, setSuccessMessage] = useState();
-  const [currentAccount, setCurrentAccount] = useState();
-
-  useEffect(() => {
-    setCurrentAccount(sessionStorage.getItem("currentAccount"));
-  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
