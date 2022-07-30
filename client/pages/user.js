@@ -9,7 +9,8 @@ const UserPage = () => {
   const [currentAccount, setCurrentAccount] = useState();
 
   useEffect(() => {
-    setCurrentAccount(sessionStorage.getItem("currentAccount"));
+    setCurrentAccount(localStorage.getItem("currentAccount"));
+    console.log(localStorage.getItem("currentAccount"))
   }, [currentAccount]);
 
   const getInfo = async (account) => {

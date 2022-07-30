@@ -15,7 +15,7 @@ const ShowContact = () => {
   const [currentAccount, setCurrentAccount] = useState();
 
   useEffect(() => {
-    setCurrentAccount(sessionStorage.getItem("currentAccount"));
+    setCurrentAccount(localStorage.getItem("currentAccount"));
   }, []);
 
   const handleSubmit = async (event) => {

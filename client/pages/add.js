@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Form, Input, Message } from "semantic-ui-react";
 import Layout from "../components/Layout";
 import contactFactory from "../contactFactory";
@@ -9,6 +9,11 @@ const AddContact = () => {
   const [discord, setDiscord] = useState("");
   const [errorMessage, setErrorMessage] = useState();
   const [successMessage, setSuccessMessage] = useState();
+  const [currentAccount, setCurrentAccount] = useState();
+
+  useEffect(() => {
+    setCurrentAccount(localStorage.getItem("currentAccount"));
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

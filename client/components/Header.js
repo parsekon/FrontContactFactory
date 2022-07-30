@@ -6,7 +6,7 @@ const Header = () => {
   const [currentAccount, setCurrentAccount] = useState();
 
   useEffect(() => {
-    setCurrentAccount(sessionStorage.getItem("currentAccount"))
+    setCurrentAccount(localStorage.getItem("currentAccount"))
   }, [])
 
   const handleConnectMetamaskClick = async () => {
@@ -20,7 +20,7 @@ const Header = () => {
         method: "eth_requestAccounts",
       });
       setCurrentAccount(accounts[0]);
-      sessionStorage.setItem("currentAccount", currentAccount);
+      localStorage.setItem("currentAccount", currentAccount);
     } catch (error) {
       console.error(error);
     }
