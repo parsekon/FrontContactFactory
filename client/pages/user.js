@@ -10,7 +10,7 @@ const UserPage = () => {
 
   useEffect(() => {
     setCurrentAccount(sessionStorage.getItem("currentAccount"));
-  }, []);
+  }, [currentAccount]);
 
   const getInfo = async (account) => {
     try {
