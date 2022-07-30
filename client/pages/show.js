@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Button, Form, Message } from "semantic-ui-react";
 import Layout from "../components/Layout";
 import getContactByAddress from "../utils/getContactByAddress";
-import { currentAccount } from "../components/Header";
 
 // компонет просмотра карточек
 const ShowContact = () => {
@@ -15,7 +14,7 @@ const ShowContact = () => {
   const [currentAccount, setCurrentAccount] = useState();
 
   useEffect(() => {
-    setCurrentAccount(localStorage.getItem("currentAccount"));
+    setCurrentAccount(sessionStorage.getItem("currentAccount"));
   }, []);
 
   const handleSubmit = async (event) => {
