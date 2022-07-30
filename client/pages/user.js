@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Button } from "semantic-ui-react";
 import Layout from "../components/Layout";
 import getContactByAddress from "../utils/getContactByAddress";
 
@@ -7,21 +6,22 @@ const UserPage = () => {
   const [telegram, setTelegram] = useState();
   const [discord, setDiscord] = useState();
   const [desc, setDesc] = useState();
-  const [currentAccount, setCurrentAccount] = useState(() =>
-    localStorage.getItem("currentAccount")
-  );
+  const [currentAccount, setCurrentAccount] = useState();
 
-  (async () => {
-    try {
-      const contact = await getContactByAddress(currentAccount);
-      setTelegram(contact.telegram);
-      setDiscord(contact.discord);
-      setDesc(contact.desc);
-      console.log("currentAccount", currentAccount);
-    } catch (error) {
-      console.error(error.message);
-    }
-  })();
+  useEffect(() => {
+    setCurrentAccount(sessionStorage.getItem("currentAccount"));
+    const getInfo = async (account) => {
+      try {
+        const contact = await getContactByAddress(account);
+        setTelegram(contact.telegram);
+        setDiscord(contact.discord);
+        setDesc(contact.desc);
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    getInfo(currentAccount);
+  }, []);
 
   return (
     <Layout>

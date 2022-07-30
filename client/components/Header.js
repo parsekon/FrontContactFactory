@@ -6,8 +6,8 @@ const Header = () => {
   const [currentAccount, setCurrentAccount] = useState();
 
   useEffect(() => {
-    localStorage.setItem("currentAccount", currentAccount);
-  }, [currentAccount]);
+    setCurrentAccount(sessionStorage.getItem("currentAccount"))
+  }, [])
 
   const handleConnectMetamaskClick = async () => {
     const { ethereum } = window;
@@ -20,6 +20,7 @@ const Header = () => {
         method: "eth_requestAccounts",
       });
       setCurrentAccount(accounts[0]);
+      sessionStorage.setItem("currentAccount", currentAccount);
     } catch (error) {
       console.error(error);
     }
