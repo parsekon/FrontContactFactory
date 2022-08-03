@@ -9,7 +9,6 @@ const getContactByAddress = async (address) => {
     throw new Error("Такой адрес не найден");
   }
 
-  console.log("contactAddress:", contactAddress);
   const contact = Contact(contactAddress);
   const telegram = await contact.telegram();
   const discord = await contact.discord();

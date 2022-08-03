@@ -9,6 +9,11 @@ const AddContact = () => {
   const [discord, setDiscord] = useState("");
   const [errorMessage, setErrorMessage] = useState();
   const [successMessage, setSuccessMessage] = useState();
+  const [currentAccount, setCurrentAccount] = useState();
+
+  useEffect(() => {
+    setCurrentAccount(sessionStorage.getItem("currentAccount"));
+  }, [currentAccount])
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -18,8 +23,9 @@ const AddContact = () => {
       setErrorMessage("Необходимо заполнить поле Telegram");
     }
     const signer = provider.getSigner();
+    console.log("signer >>", signer)
     const contactFactoryWithSigner = contactFactory.connect(signer);
-    console.log("func:", contactFactoryWithSigner);
+    console.log("func:", contactFactoryWithSigner); 
     try {
       // в случае использования перегражунных функций необходимо
       // использовать синтаксис с квадратными скобками и прописывать функцию с аргументами в кавычках
