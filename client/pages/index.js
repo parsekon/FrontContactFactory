@@ -6,7 +6,7 @@ const Index = () => {
   const router = useRouter();
   return (
     <Layout>
-      <h1>Here you can write your own contacts or view any contacts</h1>
+      <h1 className="text-3xl font-bold underline">Here you can write your own contacts or view any contacts</h1>
       <Button.Group>
         <Button primary onClick={() => router.push("/show")}>view</Button>
         <Button.Or text="||" />
